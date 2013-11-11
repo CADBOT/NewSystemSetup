@@ -10,8 +10,17 @@ echo 'sudo gem install homesick'
 sudo gem install homesick
 echo 'homesick clone CADBOT/dotfiles'
 homesick clone CADBOT/dotfiles
+# rm old .config to avoid the conflict error
+echo 'rm -rf ~/.config'
+rm -rf ~/.config
 echo 'homesick symlink dotfiles'
 homesick symlink dotfiles
+
+# Install Vundle and other plugins
+echo 'git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+echo 'vim +BundleInstall +qall'
+vim +BundleInstall +qall 
 
 # Install programming language stuff
 
