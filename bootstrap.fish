@@ -6,8 +6,8 @@
 echo 'Should graphical programs be installed? yes or no?'
 # TODO: Add input validation loop
 read installGraphical
-gem install homesick
-homesick clone cadbot/dotfiles
+sudo gem install homesick
+homesick clone CADBOT/dotfiles
 homesick symlink dotfiles
 
 # Install programming language stuff
