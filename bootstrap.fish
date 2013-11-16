@@ -6,21 +6,6 @@
 echo 'Should graphical programs be installed? yes or no?'
 # TODO: Add input validation loop
 read installGraphical
-echo 'sudo gem install homesick'
-sudo gem install homesick
-echo 'homesick clone CADBOT/dotfiles'
-homesick clone CADBOT/dotfiles
-# rm old .config to avoid the conflict error
-echo 'rm -rf ~/.config'
-rm -rf ~/.config
-echo 'homesick symlink dotfiles'
-homesick symlink dotfiles
-
-# Install Vundle and other plugins
-echo 'git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-echo 'vim +BundleInstall +qall'
-vim +BundleInstall +qall 
 
 # Install programming language stuff
 
@@ -40,9 +25,7 @@ rvm use --default 2.0.0
 echo 'sudo apt-get install -y python-pip'
 sudo apt-get install -y python-pip
 echo 'sudo pip install -y virtualenv'
-sudo pip install -y virtualenv
-echo 'sudo pip install -y virtualenvwrapper'
-sudo pip install -y virtualenvwrapper
+sudo apt-get install -y python-virtualenv
 # Install Java/Scala stuff
 echo 'sudo apt-get install -y openjdk-7-jdk'
 sudo apt-get install -y openjdk-7-jdk
@@ -60,6 +43,26 @@ echo 'sudo apt-get install -y cowsay'
 sudo apt-get install -y cowsay
 echo 'sudo apt-get install -y xclip'
 sudo apt-get install -y xclip
+
+# Shell config and dotfile stuff
+echo 'sudo chsh -s /usr/bin/fish'
+sudo chsh -s /usr/bin/fish
+echo 'sudo gem install homesick'
+sudo gem install homesick
+echo 'homesick clone CADBOT/dotfiles'
+homesick clone CADBOT/dotfiles
+# rm old .config to avoid the conflict error
+echo 'rm -rf ~/.config'
+rm -rf ~/.config
+echo 'homesick symlink dotfiles'
+homesick symlink dotfiles
+
+# Install Vundle and other plugins
+echo 'git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+echo 'vim +BundleInstall +qall'
+vim +BundleInstall +qall 
+
 
 # To wrap up
 echo 'sudo apt-get -f install'
