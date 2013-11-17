@@ -7,6 +7,9 @@ echo 'Should graphical programs be installed? yes or no?'
 # TODO: Add input validation loop
 read installGraphical
 
+# Swap caps and esc
+setxkbmap -option caps:swapescape
+
 # Install programming language stuff
 
 # Install Ruby stuff 
