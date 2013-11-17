@@ -11,6 +11,9 @@ read installGraphical
 
 # Install Ruby stuff 
 # Install and configure rvm
+# Install curl so I can install RVM
+echo 'sudo apt-get -y install curl'
+sudo apt-get -y install curl
 echo 'curl -L get.rvm.io | bash -s stable'
 curl -L get.rvm.io | bash -s stable
 # RVM fish functions
@@ -51,17 +54,28 @@ echo 'sudo gem install homesick'
 sudo gem install homesick
 echo 'homesick clone CADBOT/dotfiles'
 homesick clone CADBOT/dotfiles
-# rm old .config to avoid the conflict error
-echo 'rm -rf ~/.config'
-rm -rf ~/.config
+#backup old rm .config to avoid the conflict error
+echo 'cd ~'
+cd ~
+echo 'mv .config .configBackup'
+mv .config .configBackup
 echo 'homesick symlink dotfiles'
 homesick symlink dotfiles
+# Move none fish stuff in .configBackup back to .config
+echo 'rm -r .configBackup/fish'
+rm -r .configBackup/fish
+mv .configBackup/* .config
+rm r .configBackup
 
 # Install Vundle and other plugins
 echo 'git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-echo 'vim +BundleInstall +qall'
-vim +BundleInstall +qall 
+
+# Use fish function to install vim vundle bundle stuff
+echo 'updatevim'
+updatevim
+#echo 'vim +BundleInstall +qall'
+#vim +BundleInstall +qall 
 
 
 # To wrap up
@@ -71,7 +85,21 @@ sudo apt-get -f install
 # GUI programs
 #Install steam
 if [ $installGraphical = 'yes' ]
-  curl -O http://media.steampowered.com/client/installer/steam.deb
-  sudo dpkg -i steam.deb
-  rm steam.deb
+  #Instal stuff for 360 controller
+  sudo add-apt-repository ppa:grumbel/ppa
+  sudo apt-get update && sudo apt-get install xboxdrv
+  #Spotify
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4E9CFF4E
+  sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list'
+  sudo apt-get update && sudo apt-get install spotify-client
+  # XBMC
+  sudo apt-get install python-software-properties pkg-config
+  sudo apt-get install software-properties-common
+  sudo add-apt-repository ppa:team-xbmc/ppa
+  sudo apt-get update
+  sudo apt-get install xbmc
 end
+
+
+
+
