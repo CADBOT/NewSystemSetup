@@ -17,8 +17,8 @@ setxkbmap -option caps:swapescape
 # Install curl so I can install RVM
 echo 'sudo apt-get -y install curl'
 sudo apt-get -y install curl
-echo 'curl -L get.rvm.io | bash -s stable'
-curl -L get.rvm.io | bash -s stable
+echo 'curl -L https://get.rvm.io | bash -s stable'
+curl -L https://get.rvm.io | bash -s stable
 # RVM fish functions
 echo 'curl --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish'
 curl --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish
