@@ -1,3 +1,4 @@
+#!usr/bin/fish
 # This script first sets up commandline centric things
 # Install homesick to setup dotfiles
 # TODO: Add options for some of this stuff
@@ -17,17 +18,34 @@ setxkbmap -option caps:swapescape
 # Install curl so I can install RVM
 echo 'sudo apt-get -y install curl'
 sudo apt-get -y install curl
-echo 'curl -L https://get.rvm.io | bash -s stable'
-curl -L https://get.rvm.io | bash -s stable
+
+#TODO: Get rid of rvm stuff after testing out rbenv
+#echo 'curl -L https://get.rvm.io | bash -s stable'
+#curl -L https://get.rvm.io | bash -s stable
 # RVM fish functions
-echo 'curl --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish'
-curl --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish
+#echo 'curl --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish'
+#curl --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish
 # Install and make default Ruby 2.0.0
-echo 'rvm install 2.0.0'
-rvm install 2.0.0
-echo 'rvm use --default 2.0.0'
-rvm use --default 2.0.0
+#echo 'rvm install 2.0.0'
+#rvm install 2.0.0
+#echo 'rvm use --default 2.0.0'
+#rvm use --default 2.0.0
 # Install python stuff
+
+# Install rbenv and ruby
+echo 'git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+echo 'git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+# Use full rbenv path, becase rbenv hooks won't be inplace until dotfiles are installed and the system is restarted
+echo '~/.rbenv/bin/rbenv install 2.0.0-p247'
+~/.rbenv/bin/rbenv install 2.0.0-p247
+echo '~/.rbenv/bin/rbenv global 2.0.0-p247'
+~/.rbenv/bin/rbenv global 2.0.0-p247
+echo '~/.rbenv/bin/rbenv shell 2.0.0-p247'
+~/.rbenv/bin/rbenv shell 2.0.0-p247
+
+
 echo 'sudo apt-get install -y python-pip'
 sudo apt-get install -y python-pip
 echo 'sudo pip install -y virtualenv'
