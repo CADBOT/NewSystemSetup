@@ -33,6 +33,8 @@ sudo apt-get -y install curl
 # Install python stuff
 
 # Install rbenv and ruby
+# install a system ruby so homesick can work(rbenv is kind of iffy sometimes...)
+sudo apt-get install ruby1.9.3
 echo 'git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 echo 'git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
@@ -93,6 +95,9 @@ echo 'git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 # Use fish function to install vim vundle bundle stuff
+# Install vim
+echo 'sudo apt-get install vim'
+sudo apt-get install vim
 echo 'updatevim'
 updatevim
 #echo 'vim +BundleInstall +qall'
