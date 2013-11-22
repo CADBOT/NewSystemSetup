@@ -94,10 +94,21 @@ rm r .configBackup
 echo 'git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
+# Build and install latest vim
+echo 'sudo apt-get install mercurial'
+sudo apt-get install mercurial
+echo 'hg clone https://vim.googlecode.com/hg/ vim'
+hg clone https://vim.googlecode.com/hg/ vim
+echo 'cd vim/src'
+cd vim/src
+echo './configure --disable-nls --enable-multibyte --with-tlib=ncurses --enable-pythoninterp --enable-rubyinterp --with-features=huge'
+./configure --disable-nls --enable-multibyte --with-tlib=ncurses --enable-pythoninterp --enable-rubyinterp --with-features=huge
+echo 'make'
+make
+echo 'sudo make install'
+sudo make install
+
 # Use fish function to install vim vundle bundle stuff
-# Install vim
-echo 'sudo apt-get install vim'
-sudo apt-get install vim
 echo 'updatevim'
 updatevim
 #echo 'vim +BundleInstall +qall'
